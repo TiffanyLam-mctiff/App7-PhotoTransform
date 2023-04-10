@@ -14,7 +14,7 @@
  
   Authors in chronological order of contribution:
   Author 1: Timothy E. Riedel
-  Author 2: ?????????
+  Author 2: Tiffany Lam
   
   References:
   http://docs.webplatform.org/wiki/concepts/programming/drawing_images_onto_canvas#Loading_the_image_programmatically
@@ -23,11 +23,11 @@
   http://mobilehtml5.org/
   http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   
-  Brief Description of Goal of Code:
-  blah, blah, blah,
+  Brief Description of Goal of Code: 
+  The goal is to design an app that can recognize and analyze the color blue in an image using the camera on an electronic device.
  
   Known Issues:
-  blah, blah, blah, blah
+  None
 -->
 
  <head>
@@ -96,7 +96,22 @@
           /*This finally draws the image onto the first drawing canvas. The specific canvas is referred to by "context". This is established down in the HTML part of the file just under the first <canvas> tag. If we weren't worried about fixing an iPhone bug we would use context.drawImage(image, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500) instead of drawImageIOSFix */
         
           drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
-
+          
+          /* Changing second image color */
+          var imgData = context.getImageData(0, 0, 600, 500);
+          var i;
+          for (i = 0; i < imgData.data.length; i += 4) 
+          {
+           imgData.data[i] = 0;
+           imgData.data[i+1] = 0;
+           imgData.data[i+2] = imgData.data[i+2];
+           imgData.data[i+3] = imgData.data[i+3];
+          }
+         /* upload second image to second canvas */
+         context2.putImageData(imgData, 0, 0);
+         
+         
+         
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
@@ -142,6 +157,19 @@
         context.fillStyle = "black";
         context.fillText("Original image will go here", 10, 20);
       </script>
+     
+     <!-- Creating second canvas -->
+     <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
+      <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas2" */
+        var canvas2 = document.getElementById('myCanvas2');
+        var context2 = canvas2.getContext("2d");
+        context2.font = '20pt Calibri';
+        context2.fillStyle = "black";
+        context2.fillText("Blue image will go here", 10, 20);
+        
+      </script>
+     
+     
 
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
