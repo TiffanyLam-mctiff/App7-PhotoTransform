@@ -105,12 +105,12 @@
          var canvas2 = document.getElemenntById("myCanvas2"); //added second canvas to display the blue image
          var context2 = canvas2.getContext("2d"); //defines type of canvas used 
          
-         var imgData = context.getImageData(0 ,0, 600, 500); //created new variable to store pixel data in original canvas
+         var imageData = context.getImageData(0 ,0, 600, 500); //created new variable to store pixel data in original canvas
          var data = imageData.data; //stores image pixel data
          
-         for (var i = 0; i < data.length; i += 4) { //loops through the pizels in the data of the first canvas
-          data[i] =0; //red paramater is equal to 0
-          data[i + 1] =0; //green parameter is equal to 0
+         for (var pixel = 0; pixel < data.length; pixel += 4) { //loops through the pizels in the data of the first canvas
+          data[pixel] =0; //red paramater is equal to 0
+          data[pixel + 1] =0; //green parameter is equal to 0
           
          }
          
@@ -158,7 +158,7 @@
      
      <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
-        var myCanvas2 = document.getElementById('myCanvas2'); //information passed to second canvas
+        var canvas2 = document.getElementById('myCanvas2'); //information passed to second canvas
         var context2 = canvas2.getContext("2d"); //adjusted type of canvas
         context2.font = '20pt Calibri'; //text font
         context2.fillStyle = "black"; //text color
