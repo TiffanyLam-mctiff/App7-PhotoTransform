@@ -133,6 +133,7 @@
  </script>
  </head>
 
+ 
  <body>
   <div data-role="page">
     <div data-role="header">
@@ -159,10 +160,10 @@
      <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
         var canvas2 = document.getElementById('myCanvas2'); //information passed to second canvas
-        var context2 = canvas.getContext("2d"); //adjusted type of canvas
-        context.font = '20pt Calibri'; //text font
-        context.fillStyle = "black"; //text color
-        context.fillText("Processed image will go here", 10, 20); //text dimensions
+        var context2 = canvas2.getContext("2d"); //adjusted type of canvas
+        context2.font = '20pt Calibri'; //text font
+        context2.fillStyle = "black"; //text color
+        context2.fillText("Processed image will go here", 10, 20); //text dimensions
       </script> <!--end of script.-->
 
     </div><!-- /content -->
