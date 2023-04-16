@@ -102,14 +102,14 @@
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
           
-         var canvas2 = document.getElemenntById("myCanvas2"); //added second canvas to display the blue image
+         var canvas2 = document.getElementById("myCanvas2"); //added second canvas to display the blue image
          var context2 = canvas2.getContext("2d"); //defines type of canvas used 
          
          var imageData = context.getImageData(0 , 0, 600, 500); //created new variable to store pixel data in original canvas
          var data = imageData.data; //stores image pixel data
          for (var i = 0; i < data.length; i += 4) { //I used this to loop to get my pixels modified to only display blue
-              data[i] = 0; // this allowed me to identify the red
-              data[i + 1] = 0; // this allowed me to identify the green
+              data[i] = 0; // identifies the color red
+              data[i + 1] = 0; // identifies the color green
          }
          
          context2.putImageData(imageData, 0, 0); //the selected image will appear in the second canvas after the levels of red,green, and blueness have been adjusted.
